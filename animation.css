@@ -1,33 +1,76 @@
-html {
-	width:100%;
-	height:100%;
-	display:table;
-	text-align:center;
+@-webkit-keyframes show75 {
+  from {
+    stroke-dashoffset: 537;
+  }
+  
+  to {
+    stroke-dashoffset: 134;
+  }
 }
 
+@keyframes show75 {
+  from {
+    stroke-dashoffset: 537;
+  }
+  
+  to {
+    stroke-dashoffset: 124;
+  }
+}
+
+.chart[data-percent='75'] .outer {
+  stroke-dashoffset: 133;
+  -webkit-animation: show75 2s;
+  animation: show75 2s;
+}
+
+.chart svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.outer {
+  fill: transparent;
+  stroke: #333;
+  stroke-width: 20;
+  stroke-dasharray: 534;
+  transition: stroke-dashoffset 1s;
+  -webkit-animation-play-state: running;
+  
+  /* firefox bug fix - won't rotate at 90deg angles */
+  -moz-transform: rotate(-89deg) translateX(-190px);
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+/* Container styles */
 body {
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#999));
-	display:table-cell;
-	vertical-align:middle;
-    font: 400 15px Lato, sans-serif;
-    line-height: 1.8;
+  background-color: #fff;
+  color: #333;
+  font-family: 'Lato';
 }
 
-#text1, #text2, #text3, #text4, #text5, #text6, #text7 {
-	display: none;
+.chart {
+  position: relative;
+  display: inline-block;
+  color: #999;
+  font-size: 20px;
+  text-align: center;
 }
 
-#desc {
-/*	display: none;
-*/	position:relative;
-	left: 40%;
-	top: 40%;
+.chart figcaption {
+  padding: 50px 25px;
+  width: 100px;
+  height: 50px;
+  border: 20px solid #f0f0f0;
+  border-radius: 100px;
+  line-height: 50px;
 }
 
-.anidiv {
-	
-	height: 300px;
-	width: 300px;
-	border-radius: 50%;
-	border: 3px solid white;
+.chart img {
+  position: absolute;
+  max-width: 100px;
+  max-height: 100px;
+  background: white;
 }
